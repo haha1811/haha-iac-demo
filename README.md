@@ -4,11 +4,6 @@
 
 > 常用指令速記（可列印貼紙 / README 封面用）
 
-![Git 小抄（繁中）](docs/git_cheatsheet_zhTW.png)
-
-<details>
-<summary>文字版（可複製）</summary>
-
 ### 最常用 5 招
 ```bash
 git remote -v                  # 檢視遠端 URL（fetch/push）
