@@ -1,12 +1,3 @@
-好了！我幫你做了一張可放進 README 的「Git 小抄（繁中）」PNG。
-
-[下載 PNG（git\_cheatsheet\_zhTW.png）](sandbox:/mnt/data/git_cheatsheet_zhTW.png)
-
----
-
-## 直接嵌到 README 的 Markdown（貼紙版）
-
-把下面這段貼到 `README.md` 就行：
 
 ````md
 ## Git 小抄（繁中）
