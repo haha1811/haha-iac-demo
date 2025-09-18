@@ -35,7 +35,7 @@ resource "aws_security_group" "ap_sg" {
 
 
 ###########
-## ap-sg ##
+## db-sg ##
 ###########
 
 resource "aws_security_group" "db_sg" {

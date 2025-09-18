@@ -29,14 +29,19 @@ variable "ami_openvpn_id" {
   default     = "ami-0e88f24435ee93ef4"
 }
 
-variable "ami_ap_id" {
+variable "ami_windows-2025_id" {
   description = "AP AMIs ID"
   type        = string
-  default     = "ami-064c417936d694433"
+  default     = "ami-0910ccfe3edc72362"
 }
 
 variable "openvpn_sg_id" {
   description = "OPENVPN SG ID"
+  type        = string
+}
+
+variable "db_sg_id" {
+  description = "DB SG"
   type        = string
 }
 
@@ -45,8 +50,8 @@ variable "ap_sg_id" {
   type        = string
 }
 
-variable "eip_openvpn_id" {
-  description = "OPENVPN EIP ID"
-  type        = string
-}
+#variable "eip_openvpn_id" {
+#  description = "OPENVPN EIP ID"
+#  type        = string
+#}
 

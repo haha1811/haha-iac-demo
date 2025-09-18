@@ -1,0 +1,38 @@
+# 100GB gp3（建議作為資料盤）
+resource "aws_ebs_volume" "db_data_100" {
+  availability_zone = var.availability_zone
+  size              = 100
+  type              = "gp3"
+  tags = {
+    Name = "${var.project}-db-data-100"
+  }
+}
+
+resource "aws_volume_attachment" "db_data_100_attach" {
+  device_name = "/dev/sdd"                      # Windows 會映射成新磁碟，之後在磁碟管理初始化
+  volume_id   = aws_ebs_volume.db_data_100.id
+  instance_id = var.instance_id
+}
+
+# 50GB gp3（建議作為日誌/備援盤）
+resource "aws_ebs_volume" "db_logs_50" {
+  availability_zone = var.availability_zone
+  size              = 50
+  type              = "gp3"
+  tags = {
+    Name = "${var.project}-db-logs-50"
+  }
+}
+
+resource "aws_volume_attachment" "db_logs_50_attach" {
+  device_name = "/dev/sde"
+  volume_id   = aws_ebs_volume.db_logs_50.id
+  instance_id = var.instance_id
+}
+
+
+# ----- output -----
+
+output "db_data_100_volume_id" { value = aws_ebs_volume.db_data_100.id }
+output "db_logs_50_volume_id"  { value = aws_ebs_volume.db_logs_50.id  }
+

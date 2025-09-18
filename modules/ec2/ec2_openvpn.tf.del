@@ -14,14 +14,5 @@ resource "aws_eip_association" "openvpn" {
   allocation_id = var.eip_openvpn_id
 }
 
-resource "aws_instance" "ap1" {
-  ami           = var.ami_ap_id
-  instance_type = "t3.micro"
-  subnet_id     = var.private_subnet_1_id
-  key_name      = var.manager_key_pair
-  vpc_security_group_ids = [var.ap_sg_id]
-  tags = {
-    Name = "${var.project}-ap1"
-  }
-}
+
 

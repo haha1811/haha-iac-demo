@@ -8,11 +8,6 @@ variable "subnet_id" {
   type        = string
 }
 
-variable "eip_id" {
-  description = "Elastic IP allocation ID"
-  type        = string
-}
-
 variable "project" {
   description = "Project name prefix used for tagging resources"
   type        = string
@@ -23,7 +18,7 @@ variable "private_rt_id" {
   type        = string
 }
 
-variable "nat_gateway_id" {
-  description = "NAT Gateway ID"
-  type        = string
-}
+#variable "nat_gateway_id" {
+#  description = "NAT Gateway ID"
+#  type        = string
+#}
