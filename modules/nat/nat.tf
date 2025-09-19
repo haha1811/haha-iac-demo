@@ -23,7 +23,7 @@ resource "aws_nat_gateway" "gw" {
 resource "aws_route" "nat_route" {
   route_table_id         = var.private_rt_id
   destination_cidr_block = "0.0.0.0/0"
-  nat_gateway_id         = var.nat_gateway_id
+  nat_gateway_id         = aws_nat_gateway.gw.id
 }
 
 # ----- output -----

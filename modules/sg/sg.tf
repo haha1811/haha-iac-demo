@@ -8,16 +8,16 @@ resource "aws_security_group" "ap_sg" {
   ingress {
     from_port   = 0
     to_port     = 0
-    protocol    = "-1"             # ✅ 允許 all traffic
-    cidr_blocks = ["10.100.0.0/16"]  # ✅ 僅限內部私有網段
+    protocol    = "-1"              # ✅ 允許 all traffic
+    cidr_blocks = ["10.100.0.0/16"] # ✅ 僅限內部私有網段
     description = "allow haha-iac-demo vpc"
   }
-  
+
   ingress {
     from_port   = 0
     to_port     = 0
-    protocol    = "-1"             # ✅ 允許 all traffic
-    cidr_blocks = ["210.64.53.104/32"]  # PTC IP
+    protocol    = "-1"                 # ✅ 允許 all traffic
+    cidr_blocks = ["210.64.53.104/32"] # PTC IP
     description = "allow ptc ip"
   }
 
@@ -27,9 +27,9 @@ resource "aws_security_group" "ap_sg" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-  
+
   tags = {
-    Name = "${var.project}-ap-sg"  # ✅ 加入標籤
+    Name = "${var.project}-ap-sg" # ✅ 加入標籤
   }
 }
 
@@ -45,16 +45,16 @@ resource "aws_security_group" "db_sg" {
   ingress {
     from_port   = 0
     to_port     = 0
-    protocol    = "-1"             # ✅ 允許 all traffic
-    cidr_blocks = ["10.100.0.0/16"]  # ✅ 僅限內部私有網段
+    protocol    = "-1"              # ✅ 允許 all traffic
+    cidr_blocks = ["10.100.0.0/16"] # ✅ 僅限內部私有網段
     description = "allow haha-iac-demo vpc"
   }
-  
+
   ingress {
     from_port   = 0
     to_port     = 0
-    protocol    = "-1"             # ✅ 允許 all traffic
-    cidr_blocks = ["210.64.53.104/32"]  # PTC IP
+    protocol    = "-1"                 # ✅ 允許 all traffic
+    cidr_blocks = ["210.64.53.104/32"] # PTC IP
     description = "allow ptc ip"
   }
 
@@ -64,9 +64,9 @@ resource "aws_security_group" "db_sg" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-  
+
   tags = {
-    Name = "${var.project}-db-sg"  # ✅ 加入標籤
+    Name = "${var.project}-db-sg" # ✅ 加入標籤
   }
 }
 
@@ -81,16 +81,16 @@ resource "aws_security_group" "openvpn_sg" {
   ingress {
     from_port   = 0
     to_port     = 0
-    protocol    = "-1"             # ✅ 允許 all traffic
-    cidr_blocks = ["10.100.0.0/16"]  # ✅ 僅限內部私有網段
+    protocol    = "-1"              # ✅ 允許 all traffic
+    cidr_blocks = ["10.100.0.0/16"] # ✅ 僅限內部私有網段
     description = "allow haha-iac-demo vpc"
   }
-  
+
   ingress {
     from_port   = 0
     to_port     = 0
-    protocol    = "-1"             # ✅ 允許 all traffic
-    cidr_blocks = ["210.64.53.104/32"]  # PTC IP
+    protocol    = "-1"                 # ✅ 允許 all traffic
+    cidr_blocks = ["210.64.53.104/32"] # PTC IP
     description = "allow ptc ip"
   }
 
@@ -100,9 +100,9 @@ resource "aws_security_group" "openvpn_sg" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-  
+
   tags = {
-    Name = "${var.project}-openvpn-sg"  # ✅ 加入標籤
+    Name = "${var.project}-openvpn-sg" # ✅ 加入標籤
   }
 }
 

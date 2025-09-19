@@ -13,7 +13,17 @@ variable "public_subnet_1_id" {
   type        = string
 }
 
+variable "public_subnet_2_id" {
+  description = "Subnet ID for Manager node"
+  type        = string
+}
+
 variable "private_subnet_1_id" {
+  description = "Subnet IDs for Worker nodes"
+  type        = string
+}
+
+variable "private_subnet_2_id" {
   description = "Subnet IDs for Worker nodes"
   type        = string
 }
@@ -50,8 +60,4 @@ variable "ap_sg_id" {
   type        = string
 }
 
-#variable "eip_openvpn_id" {
-#  description = "OPENVPN EIP ID"
-#  type        = string
-#}
 
