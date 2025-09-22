@@ -47,17 +47,5 @@ module "ec2" {
 module "ebs" {
   source  = "./modules/ebs"
   project = var.project
-
-  # EC2 DB-1
-  db_1_instance_id       = module.ec2.db_1_instance_id
-  db_1_availability_zone = module.ec2.db_1_availability_zone
-
-  # EC2 DB-2
-  db_2_instance_id       = module.ec2.db_2_instance_id
-  db_2_availability_zone = module.ec2.db_2_availability_zone
-
-  # EC2 NAS
-  nas_instance_id       = module.ec2.nas_instance_id
-  nas_availability_zone = module.ec2.nas_availability_zone
 }
 
