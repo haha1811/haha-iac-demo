@@ -18,7 +18,3 @@ variable "private_rt_id" {
   type        = string
 }
 
-#variable "nat_gateway_id" {
-#  description = "NAT Gateway ID"
-#  type        = string
-#}
