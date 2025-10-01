@@ -45,6 +45,12 @@ variable "ami_windows-2025_id" {
   default     = "ami-0910ccfe3edc72362"
 }
 
+variable "ami_ubuntu-2404_id" {
+  description = "AP AMIs ID"
+  type        = string
+  default     = "ami-0a71a0b9c988d5e5e"
+}
+
 variable "openvpn_sg_id" {
   description = "OPENVPN SG ID"
   type        = string
