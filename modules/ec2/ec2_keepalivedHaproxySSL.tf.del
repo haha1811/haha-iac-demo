@@ -1,0 +1,117 @@
+resource "aws_instance" "lb_1" {
+  ami                    = var.ami_ubuntu-2404_id
+  instance_type          = "t3.micro"
+  
+  root_block_device {
+    volume_type = "gp3"
+    volume_size = 8
+    encrypted   = true  # 加密幾乎不會慢;PCI / ISO 27001 / HIPAA / 金融業均要求加密。
+    
+    tags = {
+      Name = "lb-1-root-volume"
+      Purpose = "system-disk"
+    }
+    
+  }
+  
+  subnet_id              = var.private_subnet_1_id
+  private_ip             = "10.100.2.11"
+  key_name               = var.manager_key_pair
+  vpc_security_group_ids = [var.ap_sg_id]
+  tags = {
+    Name = "${var.project}-lb-1"
+  }
+}
+
+ resource "aws_instance" "lb_2" {
+  ami                    = var.ami_ubuntu-2404_id
+  instance_type          = "t3.micro"
+  
+  root_block_device {
+    volume_type = "gp3"
+    volume_size = 8
+    encrypted   = true  # 加密幾乎不會慢;PCI / ISO 27001 / HIPAA / 金融業均要求加密。
+    
+    tags = {
+      Name = "lb-2-root-volume"
+      Purpose = "system-disk"
+    }
+  }
+  
+  subnet_id              = var.private_subnet_1_id
+  private_ip             = "10.100.2.12"
+  key_name               = var.manager_key_pair
+  vpc_security_group_ids = [var.ap_sg_id]
+  tags = {
+    Name = "${var.project}-lb-2"
+  }
+}
+
+
+resource "aws_instance" "ap_1" {
+  ami                    = var.ami_ubuntu-2404_id
+  instance_type          = "t3.micro"
+  
+  root_block_device {
+    volume_type = "gp3"
+    volume_size = 8
+    encrypted   = true  # 加密幾乎不會慢;PCI / ISO 27001 / HIPAA / 金融業均要求加密。
+    
+    tags = {
+      Name = "ap-1-root-volume"
+      Purpose = "system-disk"
+    }
+    
+  }
+  
+  subnet_id              = var.private_subnet_1_id
+  private_ip             = "10.100.2.21"
+  key_name               = var.manager_key_pair
+  vpc_security_group_ids = [var.ap_sg_id]
+  tags = {
+    Name = "${var.project}-ap-1"
+  }
+}
+
+resource "aws_instance" "ap_2" {
+  ami                    = var.ami_ubuntu-2404_id
+  instance_type          = "t3.micro"
+  
+  root_block_device {
+    volume_type = "gp3"
+    volume_size = 8
+    encrypted   = true  # 加密幾乎不會慢;PCI / ISO 27001 / HIPAA / 金融業均要求加密。
+    
+    tags = {
+      Name = "ap-2-root-volume"
+      Purpose = "system-disk"
+    }
+    
+  }
+  
+  subnet_id              = var.private_subnet_1_id
+  private_ip             = "10.100.2.22"
+  key_name               = var.manager_key_pair
+  vpc_security_group_ids = [var.ap_sg_id]
+  tags = {
+    Name = "${var.project}-ap-2"
+  }
+}
+
+# ----- output -----
+
+output "lb_1_instance_id" {
+  value = aws_instance.lb_1.id
+}
+
+output "lb_2_instance_id" {
+  value = aws_instance.lb_2.id
+}
+
+output "ap_1_instance_id" {
+  value = aws_instance.ap_1.id
+}
+
+output "ap_2_instance_id" {
+  value = aws_instance.ap_2.id
+}
