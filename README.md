@@ -175,6 +175,70 @@ git config user.email
       └───────────────────────┘
 ```
 
+---
+
+## 🚀 Aurora Serverless v2 PostgreSQL 練習記錄
+
+本次練習在現有的 IAC 模組結構上，加入了 **Aurora Serverless v2 (PostgreSQL)**、**Subnet Group**、**SNS 通知** 以及 **CloudWatch CPU 告警**，達到完整的 AWS 資料庫自動化部署流程。
+
+### 📌 本次練習重點
+
+* 建立 Aurora Serverless v2（engine = `aurora-postgresql`）
+* 使用 Private Subnets 建立 DB Subnet Group
+* 建置 Serverless v2 Scaling 設定（min/max ACU）
+* 建立 SNS Topic + Email Subscription
+* 建立 CloudWatch Alarm（CPUUtilization > 70%）
+* 將 Writer / Reader Endpoint 輸出供 AP/CLI 使用
+
+### 📁 新增檔案
+
+* `aurora.tf` — 包含 Aurora Cluster、Instance、Subnet Group、SNS、Alarm、Outputs
+* `variables.tf` — 新增 Aurora 與 SNS 相關變數
+* `terraform.tfvars` — 補上密碼與收信 email
+
+---
+
+### 🧩 Aurora Serverless v2 — Terraform 語法摘要
+
+```hcl
+resource "aws_rds_cluster" "aurora_pg" {
+  engine = "aurora-postgresql"
+
+  serverlessv2_scaling_configuration {
+    min_capacity = 0.5
+    max_capacity = 4
+  }
+}
+```
+
+---
+
+### 📡 CloudWatch CPU Alarm（SNS 通知）
+
+```hcl
+resource "aws_cloudwatch_metric_alarm" "aurora_cpu_high" {
+  metric_name = "CPUUtilization"
+  threshold   = 70
+  alarm_actions = [
+    aws_sns_topic.aurora_alarm_topic.arn
+  ]
+}
+```
+
+---
+
+### 🎯 實作成果
+
+Terraform 自動建立：
+
+* Aurora Serverless v2 叢集 + Writer Instance
+* 私網 Subnet Group
+* SNS 通知（Email 訂閱）
+* CloudWatch CPU Alarm（>70%）
+* Writer / Reader Endpoint 輸出至 CLI
+
+---
+
 
 
 
