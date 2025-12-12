@@ -49,3 +49,21 @@ module "ebs" {
   project = var.project
 }
 
+# RDS 模組
+module "rds" {
+  source                 = "./modules/rds"
+  project                = var.project
+  private_subnet_ids     = module.vpc.private_subnet_ids
+  db_sg_id               = module.sg.db_sg_id
+  alarm_sns_topic_arn    = module.sns.alarm_topic_arn
+  aurora_db_name         = var.aurora_db_name
+  aurora_master_username = var.aurora_master_username
+  aurora_master_password = var.aurora_master_password
+}
+
+# SNS 模組
+module "sns" {
+  source      = "./modules/sns"
+  project     = var.project
+  alert_email = var.alert_email
+}
