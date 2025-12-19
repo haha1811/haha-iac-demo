@@ -1,0 +1,10 @@
+# Cloud9 環境資源
+resource "aws_cloud9_environment_ec2" "haha_iac_cloud9" {
+  name                        = "${var.project}-cloud9"
+  description                 = "${var.project}-cloud9"
+  instance_type              = "t2.micro"
+  image_id                   = var.cloud9_image_id
+  automatic_stop_time_minutes = 30
+  connection_type            = "CONNECT_SSM"
+  subnet_id                  = var.public_subnet_1_id
+}

@@ -67,3 +67,12 @@ module "sns" {
   project     = var.project
   alert_email = var.alert_email
 }
+
+# Cloud9 模組 
+# → 建完後會一直跳錯誤！
+# 只能透過手動 Delete Cloud9 後，把 cloud9.tf 設定值 del 才能正常執行。 
+module "cloud9" {
+  source             = "./modules/cloud9"
+  project            = var.project
+  public_subnet_1_id = module.vpc.public_subnet_ids[0]
+}
